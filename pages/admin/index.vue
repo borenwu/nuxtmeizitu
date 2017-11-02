@@ -2,7 +2,15 @@
     <div class="example-simple">
         <h1 id="example-title" class="example-title">Simple Example</h1>
 
-        <input type="text" class="mdl-textfield__input" v-model="dirname" >
+        <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text"  v-model="dirname">
+            <label class="mdl-textfield__label" >dirname...</label>
+        </div>
+        <br>
+        <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text"  v-model="tag">
+            <label class="mdl-textfield__label" >tag...</label>
+        </div>
 
         <div class="upload">
             <ul>
@@ -63,6 +71,7 @@
         data() {
             return {
                 dirname:'dirname',
+                tag:'tag',
                 files: [],
             }
         },
@@ -91,7 +100,8 @@
                     console.log('add', newFile)
                     newFile.data = {
                         dirname:this.dirname,
-                        filename:newFile.name
+                        filename:newFile.name,
+                        tag:this.tag
                     }
                 }
                 if (newFile && oldFile) {

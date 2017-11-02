@@ -66,7 +66,7 @@ a img {
 
 .android-header {
     overflow: visible;
-    background-color: white;
+    background-color: #ededed;
 }
 
 .android-header .material-icons {
@@ -148,8 +148,8 @@ a img {
 
 .android-drawer .mdl-layout-title {
     position: relative;
-    background: #6ab344;
-    height: 160px;
+    background: rgb(63, 81, 181);
+    /*height: 160px;*/
 }
 
 .android-drawer .android-logo-image {

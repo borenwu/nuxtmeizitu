@@ -6,51 +6,57 @@
             <div class="mdl-grid portfolio-max-width">
                 <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
                     <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Blog template</h2>
+                        <h2 class="mdl-card__title-text">{{post.title}}</h2>
                     </div>
                     <div class="mdl-card__media">
-                        <img class="article-image" src="~assets/img/portfolio-example-01.jpg" border="0" alt="">
+                        <img class="article-image" src=" " border="0" alt="">
                     </div>
-                    <div class="mdl-card__supporting-text">
-                        <strong>Includes</strong>
-                        <span>Design, UX and Frontend Development</span>
+                    <div class="mdl-card__supporting-text main-meta">
+                        <span>分类：<a href="http://www.mzitu.com/xinggan/" rel="category tag">{{post.tag}}</a></span>
+                        <br>
+                        <span>发布于 {{post.date.split('T')[0]}}</span>
                     </div>
                     <div class="mdl-grid portfolio-copy">
-                        <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Introduction</h3>
+                        <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">点赞</h3>
                         <div class="mdl-cell mdl-cell--6-col mdl-card__supporting-text no-padding">
                             <p>
-                                Excepteur reprehenderit sint exercitation ipsum consequat qui sit id velit elit. Velit anim eiusmod labore sit amet. Voluptate voluptate irure occaecat deserunt incididunt esse in. Sunt velit aliquip sunt elit ex nulla reprehenderit qui ut eiusmod ipsum do. Duis veniam reprehenderit laborum occaecat id proident nulla veniam. Duis enim deserunt voluptate aute veniam sint pariatur exercitation. Irure mollit est sit labore est deserunt pariatur duis aute laboris cupidatat. Consectetur consequat esse est sit veniam adipisicing ipsum enim irure.
+                                觉得不错就点个赞，观众老爷们的赞赏是我更新的动力
                             </p>
                         </div>
                         <div class="mdl-cell mdl-cell--6-col">
-                            <img class="article-image" src="~assets/img/portfolio-example-02.jpg" border="0" alt="">
+                            <img class="article-image" src="~assets/img/dashang1.jpg" border="0" alt="">
                         </div>
-                        <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Initial Ideas</h3>
-                        <div class="mdl-cell mdl-cell--6-col">
-                            <img class="article-image" src="~assets/img/portfolio-example-03.jpg" border="0" alt="">
-                        </div>
-                        <div class="mdl-cell mdl-cell--6-col mdl-card__supporting-text no-padding ">
-                            <p>
-                                Excepteur reprehenderit sint exercitation ipsum consequat qui sit id velit elit. Velit anim eiusmod labore sit amet. Voluptate voluptate irure occaecat deserunt incididunt esse in. Sunt velit aliquip sunt elit ex nulla reprehenderit qui ut eiusmod ipsum do. Duis veniam reprehenderit laborum occaecat id proident nulla veniam. Duis enim deserunt voluptate aute veniam sint pariatur exercitation. Irure mollit est sit labore est deserunt pariatur duis aute laboris cupidatat. Consectetur consequat esse est sit veniam adipisicing ipsum enim irure.
-                            </p>
-                        </div>
-                        <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Final Concept</h3>
-                        <div class="mdl-cell mdl-cell--6-col">
-                            <img class="article-image" src="~assets/img/portfolio-example-05.jpg" border="0" alt="">
-                        </div>
-                        <div class="mdl-cell mdl-cell--6-col">
-                            <img class="article-image" src="~assets/img/portfolio-example-06.jpg" border="0" alt="">
-                        </div>
-                        <div class="mdl-cell mdl-cell--8-col mdl-card__supporting-text no-padding ">
-                            <p>
-                                Excepteur reprehenderit sint exercitation ipsum consequat qui sit id velit elit. Velit anim eiusmod labore sit amet. Voluptate voluptate irure occaecat deserunt incididunt esse in. Sunt velit aliquip sunt elit ex nulla reprehenderit qui ut eiusmod ipsum do. Duis veniam reprehenderit laborum occaecat id proident nulla veniam. Duis enim deserunt voluptate aute veniam sint pariatur exercitation. Irure mollit est sit labore est deserunt pariatur duis aute laboris cupidatat. Consectetur consequat esse est sit veniam adipisicing ipsum enim irure.
-                            </p>
+
+                        <div class="main-image" v-for="image in post.images">
+                            <img class="article-image" :src='image.url' border="0" alt="">
                         </div>
                     </div>
                 </div>
             </div>
             <my-footer></my-footer>
         </main>
+        <!--<main class="mdl-layout__content">-->
+            <!--<div class="mdl-grid portfolio-max-width">-->
+                <!--<h2 class="main-title">诱人小妖安沛蕾一丝不挂全裸上阵让你乖乖就擒</h2>-->
+
+                <!--<div class="main-meta">-->
+                    <!--<span>分类：<a href="http://www.mzitu.com/xinggan/" rel="category tag">{{post.tag}}</a></span>-->
+                    <!--<br>-->
+                    <!--<span>发布于 {{post.date.split('T')[0]}}</span>-->
+                <!--</div>-->
+
+                <!--<div>-->
+                    <!--<img src="~/assets/img/dashang1.jpg" class="donate-image">-->
+                <!--</div>-->
+
+
+                <!--<div class="main-image" v-for="image in post.images">-->
+                    <!--<img :src='image.url' border="0" alt="">-->
+                <!--</div>-->
+
+            <!--</div>-->
+            <!--<my-footer></my-footer>-->
+        <!--</main>-->
     </div>
 
 </template>
@@ -68,13 +74,48 @@
             MyFooter
         },
 
-//        async asyncData () {
-//            let { data } = await axios.get('/api/posts')
-//            return { posts: data }
-//        },
+        asyncData ({ params, error }) {
+            return axios.get('/api/posts/' + params.id)
+                .then((res) => {
+                    return { post: res.data }
+                })
+                .catch((e) => {
+                    error({ statusCode: 404, message: 'User not found' })
+                })
+        },
+
+        head () {
+            return {
+                title: this.post.title
+            }
+        },
 
         methods:{
 
         }
     }
 </script>
+
+<style>
+    .main-title {
+        font-size: 25px;
+        font-weight: bold;
+        float: left;
+        height: 24px;
+        width: 735px;
+        padding-top: 10px;
+    }
+
+    .main-meta {
+        font-size: 16px;
+        color: #151d99;
+        float: left;
+        height: 38px;
+        width: 738px;
+    }
+
+    .main-image {
+        padding-top: 5px;
+    }
+
+</style>

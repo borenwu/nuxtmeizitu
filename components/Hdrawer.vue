@@ -1,32 +1,22 @@
 <template>
-    <div class="android-drawer mdl-layout__drawer">
-        <span class="mdl-layout-title">
-          <img class="android-logo-image" src="~/assets/img/android-logo-white.png">
-        </span>
-        <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">Phones</a>
-            <a class="mdl-navigation__link" href="">Tablets</a>
-            <a class="mdl-navigation__link" href="">Wear</a>
-            <a class="mdl-navigation__link" href="">TV</a>
-            <a class="mdl-navigation__link" href="">Auto</a>
-            <a class="mdl-navigation__link" href="">One</a>
-            <a class="mdl-navigation__link" href="">Play</a>
-            <div class="android-drawer-separator"></div>
-            <span class="mdl-navigation__link" href="">Versions</span>
-            <a class="mdl-navigation__link" href="">Lollipop 5.0</a>
-            <a class="mdl-navigation__link" href="">KitKat 4.4</a>
-            <a class="mdl-navigation__link" href="">Jelly Bean 4.3</a>
-            <a class="mdl-navigation__link" href="">Android history</a>
-            <div class="android-drawer-separator"></div>
-            <span class="mdl-navigation__link" href="">Resources</span>
-            <a class="mdl-navigation__link" href="">Official blog</a>
-            <a class="mdl-navigation__link" href="">Android on Google+</a>
-            <a class="mdl-navigation__link" href="">Android on Twitter</a>
-            <div class="android-drawer-separator"></div>
-            <span class="mdl-navigation__link" href="">For developers</span>
-            <a class="mdl-navigation__link" href="">App developer resources</a>
-            <a class="mdl-navigation__link" href="">Android Open Source Project</a>
-            <a class="mdl-navigation__link" href="">Android SDK</a>
+    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+            <a class="mdl-navigation__link">首页</a>
+            <a class="mdl-navigation__link" >性感</a>
+            <a class="mdl-navigation__link" >美丝</a>
+            <a class="mdl-navigation__link" >每日更新</a>
         </nav>
     </div>
 </template>
+
+<style scoped>
+    .mdl-navigation__link {
+        font-size: larger;
+    }
+
+    .nav-title{
+        color: #ededed;
+        font-size: larger;
+    }
+
+</style>

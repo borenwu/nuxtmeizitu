@@ -3,7 +3,7 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: 'starter',
+        title: '每日福报',
         meta: [
             {charset: 'utf-8'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
@@ -34,7 +34,7 @@ module.exports = {
     /*
      ** Global CSS
      */
-    css: ['~/assets/css/material.min.css','~/assets/css/styles1.css'],
+    css: ['~/assets/css/material.min.css','~/assets/css/styles.css'],
     /*
      ** Add axios globally
      */

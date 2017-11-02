@@ -4,6 +4,7 @@ const bytes = require('bytes');
 const qn = require('qn');
 const fs = require('fs');
 const Post = require('../models/postModel')
+const moment = require('moment')
 
 
 const router = Router()
@@ -66,6 +67,7 @@ router.post('/posts', upload.single('file'), function (req, res, next) {
 
     let file = req.file;
     let dirname = req.body.dirname
+    let tag = req.body.tag
     let filename = file.originalname
 
     client.uploadFile(file.path, {key: `/${dirname}/${filename}`}, function (err, result) {
@@ -79,7 +81,8 @@ router.post('/posts', upload.single('file'), function (req, res, next) {
                 if (post == null) {
                     let newPost = Post({
                         title: dirname,
-                        date: new Date(),
+                        date: moment(),
+                        tag:tag,
                         images: [store_url]
                     });
                     newPost.save(function (err) {
@@ -101,5 +104,21 @@ router.post('/posts', upload.single('file'), function (req, res, next) {
     res.send({ret_code: '0'});
 
 });
+
+
+/* GET user by ID. */
+router.get('/posts/:id', function (req, res, next) {
+    const id = req.params.id
+
+    // get a post with ID of id
+    Post.findById(id, function(err, post) {
+        if (err) throw err;
+
+        // show the one user
+        res.json(post)
+    });
+
+})
+
 
 export default router
