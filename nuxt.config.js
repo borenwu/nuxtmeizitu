@@ -11,30 +11,35 @@ module.exports = {
         ],
 
         script: [
-            { src: 'https://code.getmdl.io/1.3.0/material.min.js' }
+            // { src: 'https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js' }
         ],
 
 
         link: [
             {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
-            {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto'},
-            {rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons'},
+            // {rel: 'stylesheet', href: 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css'},
+            // {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto'},
+            // {rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons'},
             // {rel: 'stylesheet', href: '~/assets/css/material.min.css'},
             // {rel: 'stylesheet', href: '~/assets/css/styles.css'},
         ],
     },
 
-    /*
-    ** plugins
-    */
-    // plugins: [
-    //     { src: '~plugins/material', ssr: false }
+    // modules: [
+    //     '@nuxtjs/bootstrap-vue',
+    //
+    //     // Or if you have custom bootstrap CSS...
+    //     // ['@nuxtjs/bootstrap-vue', { css: false }],
     // ],
+    /*
+     ** plugins
+     */
+    plugins: ['~plugins/bootstrap-vue'],
 
     /*
      ** Global CSS
      */
-    css: ['~/assets/css/material.min.css','~/assets/css/styles.css'],
+    // css: ['~/assets/css/material.min.css','~/assets/css/styles.css'],
     /*
      ** Add axios globally
      */
